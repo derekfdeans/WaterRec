@@ -22,14 +22,10 @@ def about():
 @app.route('/api/weather', methods=['GET'])
 def get_weather():
     try:
-        # returns data from weather api
         data = rd.receive_data()
-
-        # FAO Penman-Monteith calculation
         response = fp.fao_penman_debug(data)
-
-        # Returns boolean based off of threshold
         should_water = th.should_water(response)
+
         return jsonify(should_water)
 
     except Exception as e:
