@@ -7,18 +7,6 @@ from utils import threshold as th
 app = Flask(__name__, static_url_path='', static_folder='static')
 app.config['DEBUG'] = True
 
-@app.route("/")
-def home():
-    return app.send_static_file("index.html")
-
-@app.route("/pages/data.html")
-def data():
-    return send_from_directory("static", "pages/data.html")
-
-@app.route("/pages/aboutus.html")
-def about():
-    return send_from_directory("static", "pages/aboutus.html")
-
 @app.route('/api/weather', methods=['GET'])
 def get_weather():
     try:
@@ -41,6 +29,8 @@ def get_data():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5050)

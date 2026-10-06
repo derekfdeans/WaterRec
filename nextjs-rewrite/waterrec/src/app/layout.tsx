@@ -1,6 +1,6 @@
 import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import Navigation from "@/ui/Navigation";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -15,18 +15,13 @@ const geistMono = Geist_Mono({
 export default function RootLayout({children}: LayoutProps<"/">) {
     return (
         <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-        <body className="min-h-full flex flex-col">
+        <body className={"min-h-full flex flex-col items-center"}>
 
-        <h1>Willow Run Acres Smart Irrigation</h1>
-        <p>Project BlueLab Metro</p>
-        <nav>
-            <Link href={"/"}>home</Link>
-            <Link href={"/data"}>Data</Link>
-            <Link href={"/about"}>About Us</Link>
-            <Link href={"/gis"}>Interactive Map</Link>
-        </nav>
+        <Navigation/>
 
         {children}
+
+        <p>Project BlueLab Metro</p>
 
         </body>
         </html>

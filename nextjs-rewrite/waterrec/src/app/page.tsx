@@ -1,6 +1,6 @@
-function PlantItem({ plant }: {plant: string}) {
+function PlantItem({ url, plant }: {url: string, plant: string}) {
     return (
-        <div className={"p-3 flex flex-row items-center bg-surface-200 rounded-md outline-surface-100 outline-2"}>
+        <div className={"px-5 py-3 font-bold w-50 flex flex-row items-center bg-accent-200 rounded-md outline-accent-100 outline-2"}>
             {/*<Image src={url} alt={"plant"}/>*/}
             <p>{plant}</p>
         </div>
@@ -12,9 +12,9 @@ export default function Home() {
       <div>
           <main>
               <section>
-                  <h2>Plants at WRA!</h2>
-                  <div className={"flex flex-row flex-wrap gap-5"}>
-                      <PlantItem url={""} plant={"Collard greens"}/>
+                  <h2 className={"p-5 font-bold text-xl"}>Plants at WRA!</h2>
+                  <div className={"flex flex-row flex-wrap gap-5 p-5"}>
+                      <PlantItem url={""} plant={"Collard Greens"}/>
                       <PlantItem url={""} plant={"Tomatoes"}/>
                       <PlantItem url={""} plant={"Hibiscus"}/>
                       <PlantItem url={""} plant={"Okra"}/>
@@ -26,11 +26,11 @@ export default function Home() {
               </section>
 
               <section>
-                  <div className="recommended-header">
+                  <div>
                       <h2>Recommendations for WRA:</h2>
                       <p>Calculate irrigation based on the Penman-Monteith equation:</p>
                   </div>
-                  <div className="content">
+                  <div>
                       <button id="water-plants">Calculate</button>
                   </div>
                   <div id="result"></div>
