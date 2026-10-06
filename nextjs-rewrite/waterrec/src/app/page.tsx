@@ -1,6 +1,4 @@
-import Image from "next/image";
-
-function PlantItem({ url, plant }: {url: string, plant: string}) {
+function PlantItem({ plant }: {plant: string}) {
     return (
         <div className={"p-3 flex flex-row items-center bg-surface-200 rounded-md outline-surface-100 outline-2"}>
             {/*<Image src={url} alt={"plant"}/>*/}
