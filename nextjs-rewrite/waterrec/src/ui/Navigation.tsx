@@ -8,26 +8,12 @@ import {usePathname} from "next/navigation";
 export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleNav = () => setIsOpen(!isOpen);
-    const pathname = usePathname();
-
 
     return (
         <div className={"bg-secondary-50 text-text-900 border-b-2 border-b-secondary-900"}>
             <header className={"relative w-screen flex flex-row justify-between p-5 items-center"}>
                 <h1 className={"font-bold text-xl"}>WRA Smart Irrigation</h1>
-
-                <div className={"block md:hidden"}>
-                    <Button action={toggleNav}>toggle nav</Button>
-                </div>
-
-                <div className={"hidden md:flex"}>
-                    <nav className={"p-5 absolute gap-3 bg-secondary-50"}>
-                        <Link href={"/"} className={pathname == "/" ? "font-bold" : ""}>Home</Link>
-                        <Link href={"/data"} className={pathname == "/data" ? "font-bold" : ""}>Data</Link>
-                        <Link href={"/about"} className={pathname == "/about" ? "font-bold" : ""}>About Us</Link>
-                        <Link href={"/gis"} className={pathname == "/gis" ? "font-bold" : ""}>Interactive Map</Link>
-                    </nav>
-                </div>
+                <Button action={toggleNav}>toggle nav</Button>
             </header>
 
             {isOpen &&

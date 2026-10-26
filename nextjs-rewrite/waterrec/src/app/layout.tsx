@@ -21,7 +21,7 @@ export default function RootLayout({children}: LayoutProps<"/">) {
 
         {children}
 
-        <p>Project BlueLab Metro</p>
+        <p className={"font-bold"}>Project BlueLab Metro</p>
 
         </body>
         </html>
