@@ -10,21 +10,46 @@ export default function Navigation() {
     const toggleNav = () => setIsOpen(!isOpen);
     const pathname = usePathname();
 
+
     return (
-        <div className={"bg-secondary-50 text-text-900"}>
+        <div className={"bg-secondary-50 text-text-900 border-b-2 border-b-secondary-900"}>
             <header className={"relative w-screen flex flex-row justify-between p-5 items-center"}>
                 <h1 className={"font-bold text-xl"}>WRA Smart Irrigation</h1>
-                <Button action={toggleNav}>toggle nav</Button>
+
+                <div className={"block md:hidden"}>
+                    <Button action={toggleNav}>toggle nav</Button>
+                </div>
+
+                <div className={"hidden md:flex"}>
+                    <nav className={"p-5 absolute gap-3 bg-secondary-50"}>
+                        <Link href={"/"} className={pathname == "/" ? "font-bold" : ""}>Home</Link>
+                        <Link href={"/data"} className={pathname == "/data" ? "font-bold" : ""}>Data</Link>
+                        <Link href={"/about"} className={pathname == "/about" ? "font-bold" : ""}>About Us</Link>
+                        <Link href={"/gis"} className={pathname == "/gis" ? "font-bold" : ""}>Interactive Map</Link>
+                    </nav>
+                </div>
             </header>
 
             {isOpen &&
-                <nav className={"min-h-full min-w-full p-5 absolute flex flex-col gap-3 bg-secondary-50"}>
-                    <Link href={"/"} className={pathname == "/" ? "font-bold" : ""}>Home</Link>
-                    <Link href={"/data"} className={pathname == "/data" ? "font-bold" : ""}>Data</Link>
-                    <Link href={"/about"} className={pathname == "/about" ? "font-bold" : ""}>About Us</Link>
-                    <Link href={"/gis"} className={pathname == "/gis" ? "font-bold" : ""}>Interactive Map</Link>
-                </nav>
+                <div className={"min-h-full min-w-full "}>
+                    <LinkSection/>
+                </div>
             }
+        </div>
+    )
+}
+
+function LinkSection() {
+    const pathname = usePathname();
+
+    return (
+        <div>
+            <nav className={"min-h-full min-w-full p-5 absolute flex flex-col gap-3 bg-secondary-50"}>
+                <Link href={"/"} className={pathname == "/" ? "font-bold" : ""}>Home</Link>
+                <Link href={"/data"} className={pathname == "/data" ? "font-bold" : ""}>Data</Link>
+                <Link href={"/about"} className={pathname == "/about" ? "font-bold" : ""}>About Us</Link>
+                <Link href={"/gis"} className={pathname == "/gis" ? "font-bold" : ""}>Interactive Map</Link>
+            </nav>
         </div>
     )
 }
